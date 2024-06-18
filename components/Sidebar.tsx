@@ -1,3 +1,5 @@
+import { sidebarLinks } from '@/constants';
+import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -9,6 +11,13 @@ export default function Sidebar({ user }: SiderbarProps) {
           <Image src="/icons/logo.svg" alt="logo" width={34} height={34} />
           <h1 className="sidebar-logo">Bankfy</h1>
         </Link>
+        {sidebarLinks.map((item) => {
+          return (
+            <Link href={item.route} key={item.label} className={cn()}>
+              {item.label}
+            </Link>
+          );
+        })}
       </nav>
     </section>
   );
