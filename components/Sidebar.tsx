@@ -1,9 +1,9 @@
-'use client';
-import { sidebarLinks } from '@/constants';
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+"use client";
+import { sidebarLinks } from "@/constants";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar({ user }: SiderbarProps) {
   const pathname = usePathname();
@@ -22,8 +22,11 @@ export default function Sidebar({ user }: SiderbarProps) {
             <Link
               href={item.route}
               key={item.label}
-              className={cn('sidebar-link', { 'bg-bank-gradient': isActive })}>
-              {item.label}
+              className={cn("sidebar-link", { "bg-bank-gradient": isActive })}
+            >
+              <div className="relative size-6">
+                <Image src={item.imgURL} alt={item.label} fill />
+              </div>
             </Link>
           );
         })}
